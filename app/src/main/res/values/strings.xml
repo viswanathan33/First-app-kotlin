@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">My_First_Application</string>
+    <string name="welcome">Welcome!</string>
+    <string name="getting_started">Getting Started</string>
+    <string name="sign_in">Sign in</string>
+    <string name="eid">Enter email ID</string>
+    <string name="address">Enter Address</string>
+    <string name="password">Enter Password</string>
+    <string name="con_password">Confirm Password</string>
+    <string name="login">Login</string>
+    <string name="need_help">Need Help?</string>
+    <string name="dont_ac">Don\'t have any account?</string>
+    <string name="sign_up">Sign up</string>
+    <string name="have_ac">Already have an account?</string>
+    <string name="enter_name">Enter Name</string>
+    <string name="enter_gender">Enter Gender</string>
+    <string name="enter_age">Enter Age</string>
+    <string name="register">Register</string>
+    <string name="nameEmpty">enter name</string>
+    <string name="mailEmpty">enter mail id</string>
+    <string name="invalidMail">invalid mail id</string>
+    <string name="passwordEmpty">enter password</string>
+    <string name="passwordLength">password is too short</string>
+    <string name="passwordSplChar">A special character must occur atleast only once</string>
+    <string name="passwordUpperCase">A Uppercase case letter must occur atleast only once</string>
+    <string name="passwordLowerCase">A lower case letter must occur atleast only once</string>
+    <string name="passwordDigit">A digit must occur atleast only once</string>
+    <string name="passwordMatch">password does not match</string>
+    <string name="todo">TODO</string>
+    <string name="invalidMailOrPassword">invalid mail or password</string>
+    <string name="loginSuccesfully">Login succesfully</string>
+    <string name="item1Selected">item 1 selected</string>
+    <string name="item2Selected">item 2 selected</string>
+    <string name="signUpSuccesfully">sign up succesfully</string>
+    <string name="userAddedSuccesfully">user added succesfully</string>
+    <string name="title_activity_option">Option</string>
+</resources>
