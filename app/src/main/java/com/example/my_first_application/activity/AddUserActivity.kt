@@ -22,7 +22,7 @@ class AddUserActivity : AppCompatActivity() {
     lateinit var preferences: SharedPreferences
     private lateinit var binding: ActivityAdduserBinding
     private val gson=Gson()
-    private lateinit var mUserViewModel: UserViewModel
+    private lateinit var userViewModel: UserViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding=DataBindingUtil.setContentView(this,R.layout.activity_adduser)
@@ -32,7 +32,7 @@ class AddUserActivity : AppCompatActivity() {
         val userInfo:UserInfo=gson.fromJson(json,UserInfo::class.java)
         val usermail=userInfo.getEmail().toString()
         //val sharedPreferences:SharedPreferences=this.getSharedPreferences(Constants.share_pref, Context.MODE_PRIVATE)
-        mUserViewModel=ViewModelProvider(this).get(UserViewModel::class.java)
+        userViewModel=ViewModelProvider(this).get(UserViewModel::class.java)
         val actionBar = supportActionBar
         actionBar!!.hide()
         binding.buttonRegister.setOnClickListener {
@@ -41,7 +41,7 @@ class AddUserActivity : AppCompatActivity() {
             val userage=binding.age.text.toString()
             val useraddress=binding.address.text.toString()
             val userDetails=UserDetails(0,username,usergender,useraddress,usermail,userage)
-            mUserViewModel.addUser(userDetails)
+            userViewModel.addUser(userDetails)
             Toast.makeText(applicationContext, getString(R.string.userAddedSuccesfully), Toast.LENGTH_SHORT).show()
             ToCallActivity.callActivity(this, HomeActivity::class.java)
             //Log.d("TAG","data===>"+json)

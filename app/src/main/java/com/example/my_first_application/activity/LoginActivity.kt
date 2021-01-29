@@ -19,14 +19,14 @@ import com.google.gson.Gson
 class LoginActivity : AppCompatActivity() {
     private lateinit var preferences: SharedPreferences
     private lateinit var binding: ActivityLoginBinding
-    private lateinit var mUserViewModel: UserViewModel
+    private lateinit var userViewModel: UserViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
         val actionBar = supportActionBar
         preferences= androidx.preference.PreferenceManager.getDefaultSharedPreferences(this)
         actionBar!!.hide()
-        mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
+        userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         val loginMail=binding.editTextTextEmailAddress
         val loginPassword=binding.editTextTextPassword
         binding.logButton.setOnClickListener {
@@ -64,7 +64,7 @@ class LoginActivity : AppCompatActivity() {
                     val lPpassword = binding.editTextTextPassword.text.toString()
 
 
-                    val userLogIn: UserLogIn = mUserViewModel.logInCheck(lMail, lPpassword)
+                    val userLogIn: UserLogIn = userViewModel.logInCheck(lMail, lPpassword)
                     if (userLogIn == null) {
                         Toast.makeText(
                             applicationContext,

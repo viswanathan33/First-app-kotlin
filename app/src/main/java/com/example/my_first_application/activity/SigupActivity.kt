@@ -20,14 +20,14 @@ import com.google.gson.Gson
 class SigupActivity : AppCompatActivity() {
     private lateinit var preferences: SharedPreferences
     private lateinit var binding: ActivitySignupBinding
-    private lateinit var mUserViewModel: UserViewModel
+    private lateinit var userViewModel: UserViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding=DataBindingUtil.setContentView(this,R.layout.activity_signup)
         val actionBar = supportActionBar
 
         preferences=PreferenceManager.getDefaultSharedPreferences(this)
-        mUserViewModel= ViewModelProvider(this).get(UserViewModel::class.java)
+        userViewModel= ViewModelProvider(this).get(UserViewModel::class.java)
         actionBar!!.hide()
 
         val sigupname=binding.editTextTextSignUpPersonName
@@ -74,7 +74,7 @@ class SigupActivity : AppCompatActivity() {
                     val dbmail=binding.editTextTextSigUpEmailAddress.text.toString()
                     val dbpassword=binding.editTextTextSigUpPassword.text.toString()
                     val userLogIn= UserLogIn(dbmail,dbpassword)
-                    mUserViewModel.addLogin(userLogIn)
+                    userViewModel.addLogin(userLogIn)
                     Toast.makeText(applicationContext, getString(R.string.signUpSuccesfully), Toast.LENGTH_SHORT).show()
 
                     preferences.put(Constants.USER_INFO,json)

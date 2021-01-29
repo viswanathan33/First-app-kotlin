@@ -16,6 +16,8 @@
     <string name="enter_gender">Enter Gender</string>
     <string name="enter_age">Enter Age</string>
     <string name="register">Register</string>
+    <string name="editUser">Edit User</string>
+    <string name="editDetails">Edit Details</string>
     <string name="nameEmpty">enter name</string>
     <string name="mailEmpty">enter mail id</string>
     <string name="invalidMail">invalid mail id</string>
