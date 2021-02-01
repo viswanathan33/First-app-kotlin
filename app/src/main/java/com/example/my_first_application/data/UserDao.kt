@@ -19,4 +19,5 @@ interface UserDao {
 
     @Query("SELECT*FROM userLoginTable WHERE email =:mail AND password=:mPassword")
     fun logInCheck(mail:String,mPassword:String):UserLogIn
+
 }

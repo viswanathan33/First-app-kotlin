@@ -1,9 +1,12 @@
 package com.example.my_first_application.activity
 
+import android.app.Activity
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -12,7 +15,6 @@ import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.my_first_application.EditUserActivity
 import com.example.my_first_application.R
 import com.example.my_first_application.adapter.UserDetailsAdapter
 import com.example.my_first_application.adapter.listener.BaseListener
@@ -46,10 +48,27 @@ class HomeActivity : AppCompatActivity() {
 
 
         val listener=object:BaseListener{
-            override fun onClickItem() {
+            override fun onClickItem(v:View,position:Int) {
+                val editName=userList.get(position).name
+                val editAdress=userList.get(position).address
+                val editGender=userList.get(position).gender
+                val editAge=userList.get(position).age
 
+                val gson = Gson()
+                val userInfo = UserInfo()
+
+                userInfo.setName(editName)
+                userInfo.setAddress(editAdress)
+                userInfo.setAge(editAge)
+                userInfo.setGender(editGender)
+
+                val json: String = gson.toJson(userInfo)
+
+                val intent=Intent(applicationContext,
+                    EditUserActivity::class.java)
+                intent.putExtra(Constants.EDITUSER,json)
+                startActivityForResult(intent,1)
                 Toast.makeText(applicationContext, "Item selected", Toast.LENGTH_SHORT).show()
-
             }
 
         }
@@ -76,6 +95,21 @@ class HomeActivity : AppCompatActivity() {
 
         binding.floatingActionButtonAdd.setOnClickListener {
             ToCallActivity.callActivity(this, AddUserActivity::class.java)
+        }
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode== Activity.RESULT_OK){
+            if (requestCode==1){
+                if (data!=null){
+                    val json:String?=data.getStringExtra(Constants.EDITUSER)
+                    val userInfo= gson.fromJson(json, UserInfo::class.java)
+                   // userList.add(userInfo)
+                    userListAdapter.notifyItemChanged(0)
+
+                }
+            }
+
         }
     }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

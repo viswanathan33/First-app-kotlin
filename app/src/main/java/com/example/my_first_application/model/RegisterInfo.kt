@@ -1,10 +1,11 @@
 package com.example.my_first_application.model
 
-class RegisterInfo(name:String?,gender:String?,mail:String?,age:String?) {
+class RegisterInfo(name:String?,address:String?,gender:String?,mail:String?,age:String?) {
     private var name:String = name!!
     private var gender:String = gender!!
     private var mail:String = mail!!
     private var age:String = age!!
+    private var address:String = address!!
     fun getName():String?{
         return name
     }
@@ -17,4 +18,8 @@ class RegisterInfo(name:String?,gender:String?,mail:String?,age:String?) {
     fun getAge():String?{
         return age
     }
+    fun getAddress():String?{
+        return address
+    }
+
 }
